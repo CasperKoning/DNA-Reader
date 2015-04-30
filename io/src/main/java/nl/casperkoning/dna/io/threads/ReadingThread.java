@@ -7,12 +7,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
 
-public class ReadingThread extends Thread{
-    private ProteinReader proteinReader;
-    private BlockingQueue<Protein> proteins;
-    private NotifyingObject notifyingObject;
+public class ReadingThread extends Thread {
+    private final ProteinReader proteinReader;
+    private final BlockingQueue<Protein> proteins;
+    private final NotifyingObject notifyingObject;
 
-    public ReadingThread(BlockingQueue<Protein> proteins, BufferedReader reader, NotifyingObject notifyingObject) throws IOException {
+    public ReadingThread(BlockingQueue<Protein> proteins, BufferedReader reader, NotifyingObject notifyingObject) {
         this.proteins = proteins;
         this.proteinReader = new ProteinReader(reader);
         this.notifyingObject = notifyingObject;
@@ -24,12 +24,12 @@ public class ReadingThread extends Thread{
         try {
             Protein protein = proteinReader.read();
             Protein nextProtein = protein;
-            if(nextProtein == null){
+            if (nextProtein == null) {
                 notifyingObject.stopReading();
             }
-            while(notifyingObject.isReading() && nextProtein!= null){
+            while (notifyingObject.isReading() && nextProtein != null) {
                 nextProtein = proteinReader.read();
-                if(nextProtein == null){
+                if (nextProtein == null) {
                     notifyingObject.stopReading();
                 }
                 proteins.put(protein);

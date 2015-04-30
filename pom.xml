@@ -11,6 +11,7 @@
     <modules>
         <module>model</module>
         <module>io</module>
+        <module>demo</module>
     </modules>
 
 
@@ -25,6 +26,11 @@
     <dependencyManagement>
         <dependencies>
             <!--Internal dependencies-->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>io</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>model</artifactId>
