@@ -28,6 +28,10 @@ public class ProteinReader {
                 break;
             }
         }
+        return createProteinOutOfAminoAcids(aminoAcids);
+    }
+
+    private Protein createProteinOutOfAminoAcids(List<AminoAcid> aminoAcids) {
         if (!aminoAcids.isEmpty() && lastAminoAcidIsStop(aminoAcids)) {
             return new Protein(aminoAcids);
         } else {
