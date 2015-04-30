@@ -1,8 +1,5 @@
 package nl.casperkoning.dna.io.read;
 
-import nl.casperkoning.dna.io.read.AminoAcidReader;
-import nl.casperkoning.dna.io.read.DNASequenceReader;
-import nl.casperkoning.dna.io.read.ProteinReader;
 import nl.casperkoning.dna.model.AminoAcid;
 import nl.casperkoning.dna.model.Protein;
 import org.junit.Test;
