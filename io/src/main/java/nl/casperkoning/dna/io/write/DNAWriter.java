@@ -4,14 +4,14 @@ import nl.casperkoning.dna.model.Protein;
 
 import java.io.Writer;
 
-public abstract class DNAWriter {
+abstract class DNAWriter {
     private final Writer writer;
 
-    protected DNAWriter(Writer writer){
+    DNAWriter(Writer writer){
         this.writer = writer;
     }
 
-    protected final Writer getWriter(){
+    final Writer getWriter(){
         return this.writer;
     }
 

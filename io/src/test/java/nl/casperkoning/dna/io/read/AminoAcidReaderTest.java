@@ -31,7 +31,7 @@ public class AminoAcidReaderTest {
         AminoAcid aminoAcid1 = reader.read();
         assertThat("ACT",matchesToRegex(aminoAcid1.getBasePairsRegex()));
         reader.reset();
-        reader.shiftCursorFoward(2);
+        reader.shiftCursorForward(2);
         AminoAcid aminoAcid2 = reader.read();
         assertThat("TGA",matchesToRegex(aminoAcid2.getBasePairsRegex()));
     }

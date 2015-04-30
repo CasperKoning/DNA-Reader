@@ -32,7 +32,7 @@ public class ProteinReaderTest {
     }
 
     @Test
-    public void testReadProteinWithAmountOfBasesInfrontNotDivisibleByThree() throws IOException {
+    public void testReadProteinWithAmountOfBasesInFrontNotDivisibleByThree() throws IOException {
         String dna = "AA" + START + SOME_OTHER_AMINO_ACID + STOP;
         ProteinReader reader = new ProteinReader(new AminoAcidReader(new DNASequenceReader(new BufferedReader(new StringReader(dna)))));
         Protein protein = reader.read();

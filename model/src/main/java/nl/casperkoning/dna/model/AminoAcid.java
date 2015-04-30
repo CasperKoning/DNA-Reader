@@ -25,7 +25,7 @@ public enum AminoAcid {
 
     public static final int NUMBER_OF_BASES_IN_AN_AMINO_ACID = 3;
 
-    private String basePairsRegex;
+    private final String basePairsRegex;
 
     private AminoAcid(String basePairsRegex){
         this.basePairsRegex = basePairsRegex;

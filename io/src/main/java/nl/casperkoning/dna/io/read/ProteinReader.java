@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProteinReader {
-    private AminoAcidReader aminoAcidReader;
+    private final AminoAcidReader aminoAcidReader;
 
     public ProteinReader(AminoAcidReader aminoAcidReader) {
         this.aminoAcidReader = aminoAcidReader;
@@ -46,7 +46,7 @@ public class ProteinReader {
                 return aminoAcid;
             } else {
                 aminoAcidReader.reset();
-                aminoAcidReader.shiftCursorFoward(1);
+                aminoAcidReader.shiftCursorForward(1);
                 aminoAcidReader.mark(1);
             }
         }

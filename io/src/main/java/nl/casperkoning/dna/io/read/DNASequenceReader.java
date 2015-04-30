@@ -3,13 +3,13 @@ package nl.casperkoning.dna.io.read;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class DNASequenceReader {
-    private BufferedReader reader;
-    public DNASequenceReader(BufferedReader reader) {
+class DNASequenceReader {
+    private final BufferedReader reader;
+    DNASequenceReader(BufferedReader reader) {
         this.reader = reader;
     }
 
-    public String read() throws IOException{
+    String read() throws IOException{
         int chr;
         if((chr = reader.read())!=-1){
             String base = String.valueOf((char)chr);
@@ -22,11 +22,11 @@ public class DNASequenceReader {
         }
     }
 
-    public void mark(int readAheadLimit) throws IOException{
+    void mark(int readAheadLimit) throws IOException{
         reader.mark(readAheadLimit);
     }
 
-    public void reset() throws IOException {
+    void reset() throws IOException {
         reader.reset();
     }
 }
