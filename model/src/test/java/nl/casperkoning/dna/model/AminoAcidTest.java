@@ -1,3 +1,5 @@
+package nl.casperkoning.dna.model;
+
 import nl.casperkoning.dna.model.AminoAcid;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;

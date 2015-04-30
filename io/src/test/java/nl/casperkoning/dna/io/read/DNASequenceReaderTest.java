@@ -1,4 +1,6 @@
-import nl.casperkoning.dna.io.DNASequenceReader;
+package nl.casperkoning.dna.io.read;
+
+import nl.casperkoning.dna.io.read.DNASequenceReader;
 import org.junit.Test;
 
 import java.io.BufferedReader;

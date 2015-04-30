@@ -1,5 +1,5 @@
-import nl.casperkoning.dna.io.AminoAcidReader;
-import nl.casperkoning.dna.io.DNASequenceReader;
+package nl.casperkoning.dna.io.read;
+
 import nl.casperkoning.dna.model.AminoAcid;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;

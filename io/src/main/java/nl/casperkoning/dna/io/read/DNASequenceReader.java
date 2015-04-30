@@ -1,4 +1,4 @@
-package nl.casperkoning.dna.io;
+package nl.casperkoning.dna.io.read;
 
 import java.io.BufferedReader;
 import java.io.IOException;

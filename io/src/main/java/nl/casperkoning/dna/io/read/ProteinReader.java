@@ -1,4 +1,4 @@
-package nl.casperkoning.dna.io;
+package nl.casperkoning.dna.io.read;
 
 import nl.casperkoning.dna.model.AminoAcid;
 import nl.casperkoning.dna.model.Protein;
