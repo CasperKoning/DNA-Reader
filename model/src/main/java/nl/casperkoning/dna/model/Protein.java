@@ -5,7 +5,7 @@ import java.util.List;
 public class Protein {
     private final List<AminoAcid> aminoAcids;
 
-    public Protein(List<AminoAcid> aminoAcids){
+    public Protein(List<AminoAcid> aminoAcids) {
         this.aminoAcids = aminoAcids;
     }
 

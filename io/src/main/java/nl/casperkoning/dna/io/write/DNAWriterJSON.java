@@ -23,7 +23,7 @@ public class DNAWriterJSON extends DNAWriter {
     @Override
     public void write(Protein protein) {
         this.jsonGenerator.writeStartObject().writeStartArray("Protein");
-        for(AminoAcid aminoAcid : protein.getAminoAcids()){
+        for (AminoAcid aminoAcid : protein.getAminoAcids()) {
             jsonGenerator.write(aminoAcid.name());
         }
         jsonGenerator.writeEnd().writeEnd();
@@ -31,7 +31,7 @@ public class DNAWriterJSON extends DNAWriter {
 
     @Override
     public void stopWriting() {
-        if(this.jsonGenerator!=null) {
+        if (this.jsonGenerator != null) {
             this.jsonGenerator.writeEnd().writeEnd().flush();
             this.jsonGenerator.close();
         }

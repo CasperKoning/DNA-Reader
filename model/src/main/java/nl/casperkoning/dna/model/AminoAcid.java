@@ -27,19 +27,19 @@ public enum AminoAcid {
 
     private final String basePairsRegex;
 
-    private AminoAcid(String basePairsRegex){
+    private AminoAcid(String basePairsRegex) {
         this.basePairsRegex = basePairsRegex;
     }
 
-    public String getBasePairsRegex(){
+    public String getBasePairsRegex() {
         return basePairsRegex;
     }
 
-    public boolean isStart(){
+    public boolean isStart() {
         return this.name().equals("MET");
     }
 
-    public boolean isStop(){
+    public boolean isStop() {
         return this.name().equals("STOP");
     }
 

@@ -16,31 +16,31 @@ import static org.junit.Assert.assertThat;
 public class AminoAcidReaderTest {
 
     @Test
-    public void testReadAminoAcid() throws IOException{
+    public void testReadAminoAcid() throws IOException {
         String aaa = "AAA";
-        AminoAcidReader reader = new AminoAcidReader(new DNASequenceReader(new BufferedReader(new StringReader(aaa))));
+        AminoAcidReader reader = new AminoAcidReader(new BufferedReader(new StringReader(aaa)));
         AminoAcid aminoAcid = reader.read();
         assertNotNull(aminoAcid);
     }
 
     @Test
-    public void testMarkResetAndShiftCursorForwardWork() throws IOException{
+    public void testMarkResetAndShiftCursorForwardWork() throws IOException {
         String actga = "ACTGA";
-        AminoAcidReader reader = new AminoAcidReader(new DNASequenceReader(new BufferedReader(new StringReader(actga))));
+        AminoAcidReader reader = new AminoAcidReader(new BufferedReader(new StringReader(actga)));
         reader.mark(1);
         AminoAcid aminoAcid1 = reader.read();
-        assertThat("ACT",matchesToRegex(aminoAcid1.getBasePairsRegex()));
+        assertThat("ACT", matchesToRegex(aminoAcid1.getBasePairsRegex()));
         reader.reset();
         reader.shiftCursorForward(2);
         AminoAcid aminoAcid2 = reader.read();
-        assertThat("TGA",matchesToRegex(aminoAcid2.getBasePairsRegex()));
+        assertThat("TGA", matchesToRegex(aminoAcid2.getBasePairsRegex()));
     }
 
     private Matcher<? super String> matchesToRegex(final String basePairsRegex) {
         return new BaseMatcher<String>() {
             @Override
             public boolean matches(Object o) {
-                return o instanceof String && ((String)o).matches(basePairsRegex);
+                return o instanceof String && ((String) o).matches(basePairsRegex);
             }
 
             @Override

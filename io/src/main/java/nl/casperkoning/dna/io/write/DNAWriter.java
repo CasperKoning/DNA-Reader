@@ -7,11 +7,11 @@ import java.io.Writer;
 abstract class DNAWriter {
     private final Writer writer;
 
-    DNAWriter(Writer writer){
+    DNAWriter(Writer writer) {
         this.writer = writer;
     }
 
-    final Writer getWriter(){
+    final Writer getWriter() {
         return this.writer;
     }
 

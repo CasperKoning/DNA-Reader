@@ -13,19 +13,19 @@ import static org.junit.Assert.assertThat;
 public class DNASequenceReaderTest {
 
     @Test(expected = IOException.class)
-    public void testNotABase() throws IOException{
-        String notABase="Z";
+    public void testNotABase() throws IOException {
+        String notABase = "Z";
         DNASequenceReader reader = new DNASequenceReader(new BufferedReader(new StringReader(notABase)));
         reader.read();
     }
 
     @Test
-    public void testReadBases() throws IOException{
-        String bases="ACTG";
+    public void testReadBases() throws IOException {
+        String bases = "ACTG";
         DNASequenceReader reader = new DNASequenceReader(new BufferedReader(new StringReader(bases)));
-        assertThat(reader.read(),is("A"));
-        assertThat(reader.read(),is("C"));
-        assertThat(reader.read(),is("T"));
+        assertThat(reader.read(), is("A"));
+        assertThat(reader.read(), is("C"));
+        assertThat(reader.read(), is("T"));
         assertThat(reader.read(), is("G"));
     }
 
@@ -42,9 +42,9 @@ public class DNASequenceReaderTest {
         String bases = "ATTTTT";
         DNASequenceReader reader = new DNASequenceReader(new BufferedReader(new StringReader(bases)));
         reader.mark(1);
-        assertThat(reader.read(),is("A"));
+        assertThat(reader.read(), is("A"));
         reader.reset();
-        assertThat(reader.read(),is("A"));
+        assertThat(reader.read(), is("A"));
     }
 
 }

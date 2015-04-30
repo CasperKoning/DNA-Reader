@@ -3,6 +3,7 @@ package nl.casperkoning.dna.io.read;
 import nl.casperkoning.dna.model.AminoAcid;
 import nl.casperkoning.dna.model.Protein;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,8 @@ import java.util.List;
 public class ProteinReader {
     private final AminoAcidReader aminoAcidReader;
 
-    public ProteinReader(AminoAcidReader aminoAcidReader) {
-        this.aminoAcidReader = aminoAcidReader;
+    public ProteinReader(BufferedReader reader) {
+        this.aminoAcidReader = new AminoAcidReader(reader);
     }
 
     public Protein read() throws IOException {
@@ -35,14 +36,14 @@ public class ProteinReader {
     }
 
     private boolean lastAminoAcidIsStop(List<AminoAcid> aminoAcids) {
-        return aminoAcids.get(aminoAcids.size()-1).isStop();
+        return aminoAcids.get(aminoAcids.size() - 1).isStop();
     }
 
-    private AminoAcid getNextStart() throws IOException{
+    private AminoAcid getNextStart() throws IOException {
         aminoAcidReader.mark(1);
         AminoAcid aminoAcid;
-        while((aminoAcid = aminoAcidReader.read())!=null){
-            if(aminoAcid.isStart()){
+        while ((aminoAcid = aminoAcidReader.read()) != null) {
+            if (aminoAcid.isStart()) {
                 return aminoAcid;
             } else {
                 aminoAcidReader.reset();

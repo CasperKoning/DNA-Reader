@@ -16,14 +16,14 @@ public class DNAWriterJSONTest {
 
     @Test
     public void testReadDNA() throws IOException {
-        List<AminoAcid> aminoAcids = Arrays.asList(AminoAcid.MET,AminoAcid.ARG, AminoAcid.STOP);
+        List<AminoAcid> aminoAcids = Arrays.asList(AminoAcid.MET, AminoAcid.ARG, AminoAcid.STOP);
         Protein protein = new Protein(aminoAcids);
         StringWriter stringWriter = new StringWriter();
         DNAWriter dnaWriter = new DNAWriterJSON(stringWriter);
         dnaWriter.startWriting();
         dnaWriter.write(protein);
         dnaWriter.stopWriting();
-        assertThat(stringWriter.toString(),is("{\"DNA\":[{\"Protein\":[\"MET\",\"ARG\",\"STOP\"]}]}"));
+        assertThat(stringWriter.toString(), is("{\"DNA\":[{\"Protein\":[\"MET\",\"ARG\",\"STOP\"]}]}"));
     }
 
 }

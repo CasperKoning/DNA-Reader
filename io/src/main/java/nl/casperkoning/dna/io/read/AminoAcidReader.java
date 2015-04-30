@@ -2,22 +2,23 @@ package nl.casperkoning.dna.io.read;
 
 import nl.casperkoning.dna.model.AminoAcid;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 
 class AminoAcidReader {
     private final DNASequenceReader dnaSequenceReader;
 
-    AminoAcidReader(DNASequenceReader dnaSequenceReader){
-        this.dnaSequenceReader = dnaSequenceReader;
+    AminoAcidReader(BufferedReader reader) {
+        this.dnaSequenceReader = new DNASequenceReader(reader);
     }
 
-    AminoAcid read() throws IOException{
+    AminoAcid read() throws IOException {
         String aminoAcidString = "";
-        for(int i=0; i<AminoAcid.NUMBER_OF_BASES_IN_AN_AMINO_ACID;i++){
+        for (int i = 0; i < AminoAcid.NUMBER_OF_BASES_IN_AN_AMINO_ACID; i++) {
             String base;
-            if((base = dnaSequenceReader.read())!=null){
+            if ((base = dnaSequenceReader.read()) != null) {
                 aminoAcidString += base;
-            } else{
+            } else {
                 return null;
             }
         }
@@ -25,8 +26,8 @@ class AminoAcidReader {
     }
 
     private AminoAcid matchToAminoAcid(String aminoAcidString) {
-        for(AminoAcid aminoAcid : AminoAcid.values()){
-            if(aminoAcidString.matches(aminoAcid.getBasePairsRegex())){
+        for (AminoAcid aminoAcid : AminoAcid.values()) {
+            if (aminoAcidString.matches(aminoAcid.getBasePairsRegex())) {
                 return aminoAcid;
             }
         }
@@ -34,9 +35,9 @@ class AminoAcidReader {
     }
 
     void shiftCursorForward(int i) throws IOException {
-        for(int j=0; j<i;j++){
+        for (int j = 0; j < i; j++) {
             dnaSequenceReader.mark(1);
-            if(dnaSequenceReader.read()==null){
+            if (dnaSequenceReader.read() == null) {
                 reset();//Can't move any further
             }
         }
@@ -47,6 +48,6 @@ class AminoAcidReader {
     }
 
     void mark(int readAheadLimit) throws IOException {
-        dnaSequenceReader.mark(AminoAcid.NUMBER_OF_BASES_IN_AN_AMINO_ACID*readAheadLimit);
+        dnaSequenceReader.mark(AminoAcid.NUMBER_OF_BASES_IN_AN_AMINO_ACID * readAheadLimit);
     }
 }
