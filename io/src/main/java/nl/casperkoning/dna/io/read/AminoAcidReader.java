@@ -13,16 +13,16 @@ class AminoAcidReader {
     }
 
     AminoAcid read() throws IOException {
-        String aminoAcidString = "";
+        StringBuilder aminoAcidString = new StringBuilder();
         for (int i = 0; i < AminoAcid.NUMBER_OF_BASES_IN_AN_AMINO_ACID; i++) {
             String base;
             if ((base = dnaSequenceReader.read()) != null) {
-                aminoAcidString += base;
+                aminoAcidString.append(base);
             } else {
                 return null;
             }
         }
-        return matchToAminoAcid(aminoAcidString);
+        return matchToAminoAcid(aminoAcidString.toString());
     }
 
     private AminoAcid matchToAminoAcid(String aminoAcidString) {
