@@ -22,21 +22,25 @@ public class ReadingThread extends Thread {
     @Override
     public void run() {
         try {
-            Protein protein = proteinReader.read();
-            Protein nextProtein = protein;
+            readDna();
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void readDna() throws IOException, InterruptedException {
+        Protein protein = proteinReader.read();
+        Protein nextProtein = protein;
+        if (nextProtein == null) {
+            notifyingObject.stopReading();
+        }
+        while (notifyingObject.isReading() && nextProtein != null) {
+            nextProtein = proteinReader.read();
             if (nextProtein == null) {
                 notifyingObject.stopReading();
             }
-            while (notifyingObject.isReading() && nextProtein != null) {
-                nextProtein = proteinReader.read();
-                if (nextProtein == null) {
-                    notifyingObject.stopReading();
-                }
-                proteins.put(protein);
-                protein = nextProtein;
-            }
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
+            proteins.put(protein);
+            protein = nextProtein;
         }
     }
 }

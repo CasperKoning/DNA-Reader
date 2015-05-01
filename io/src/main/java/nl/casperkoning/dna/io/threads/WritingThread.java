@@ -20,20 +20,20 @@ public class WritingThread extends Thread {
     @Override
     public void run() {
         dnaWriter.startWriting();
-        while (notifyingObject.isReading()) {
-            try {
-                this.dnaWriter.write(proteins.take());
-            } catch (InterruptedException e) {
-                throw new RuntimeException(" WritingThread was interrupted");
-            }
-        }
-        while (!proteins.isEmpty()) {
-            try {
-                this.dnaWriter.write(proteins.take());
-            } catch (InterruptedException e) {
-                throw new RuntimeException(" WritingThread was interrupted");
-            }
+        try {
+            writeDna();
+        } catch (InterruptedException ie) {
+            throw new RuntimeException("WritingThread was interrupted.");
         }
         dnaWriter.stopWriting();
+    }
+
+    private void writeDna() throws InterruptedException {
+        while (notifyingObject.isReading()) {
+            this.dnaWriter.write(proteins.take());
+        }
+        while (!proteins.isEmpty()) {
+            this.dnaWriter.write(proteins.take());
+        }
     }
 }

@@ -13,11 +13,4 @@ public class Protein {
         return aminoAcids;
     }
 
-    @Override
-    public String toString() {
-        return "Protein{" +
-                "aminoAcids=" + aminoAcids +
-                '}';
-    }
-
 }

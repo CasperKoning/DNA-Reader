@@ -14,12 +14,17 @@
         <module>demo</module>
     </modules>
 
+    <properties>
+        <junit.version>4.11</junit.version>
+        <javax.json.version>1.0.4</javax.json.version>
+    </properties>
+
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>${junit.version}</version>
         </dependency>
     </dependencies>
 
@@ -41,7 +46,7 @@
             <dependency>
                 <groupId>org.glassfish</groupId>
                 <artifactId>javax.json</artifactId>
-                <version>1.0.4</version>
+                <version>${javax.json.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
